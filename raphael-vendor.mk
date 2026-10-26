@@ -96,7 +96,6 @@ PRODUCT_COPY_FILES += \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/dataadpl.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/dataadpl.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/dataqti.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/dataqti.rc \
-    vendor/xiaomi/raphael/proprietary/vendor/etc/init/dpmQmiMgr.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/dpmQmiMgr.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/ims_rtp_daemon.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/ims_rtp_daemon.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/imsdatadaemon.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/imsdatadaemon.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/imsqmidaemon.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/imsqmidaemon.rc \
@@ -109,7 +108,6 @@ PRODUCT_COPY_FILES += \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/netmgrd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/netmgrd.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/qcrild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/qcrild.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/qseecomd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/qseecomd.rc \
-    vendor/xiaomi/raphael/proprietary/vendor/etc/init/vendor.display.color@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.display.color@1.0-service.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/vendor.qti.adsprpc-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.adsprpc-service.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/vendor.qti.cdsprpc-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.cdsprpc-service.rc \
     vendor/xiaomi/raphael/proprietary/vendor/etc/init/vendor.qti.esepowermanager@1.1-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.esepowermanager@1.1-service.rc \
@@ -137,6 +135,7 @@ PRODUCT_COPY_FILES += \
     vendor/xiaomi/raphael/proprietary/vendor/etc/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config \
     vendor/xiaomi/raphael/proprietary/vendor/etc/seccomp_policy/codec2.vendor.base.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.base.policy \
     vendor/xiaomi/raphael/proprietary/vendor/etc/seccomp_policy/imsrtp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/imsrtp.policy \
+    vendor/xiaomi/raphael/proprietary/vendor/etc/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     vendor/xiaomi/raphael/proprietary/vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/vendor.qti.hardware.dsp.policy \
     vendor/xiaomi/raphael/proprietary/vendor/etc/seccomp_policy/wfdhdcphalservice.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/wfdhdcphalservice.policy \
     vendor/xiaomi/raphael/proprietary/vendor/etc/seccomp_policy/wfdvndservice.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/wfdvndservice.policy \
@@ -261,31 +260,11 @@ PRODUCT_COPY_FILES += \
     vendor/xiaomi/raphael/proprietary/vendor/radio/qcril_database/upgrade/9_version_update_ecc_table.sql:$(TARGET_COPY_OUT_VENDOR)/radio/qcril_database/upgrade/9_version_update_ecc_table.sql
 
 PRODUCT_PACKAGES += \
-    btaudio_offload_if \
-    android.hardware.bluetooth@1.0-impl-qti \
-    audio.bluetooth_qti.default \
-    com.dsi.ant@1.0-impl \
-    vendor.qti.hardware.bluetooth_audio@2.0-impl \
-    vendor.qti.hardware.bluetooth_audio@2.1-impl \
-    vendor.qti.hardware.bluetooth_sar@1.1-impl \
-    vendor.qti.hardware.btconfigstore@1.0-impl \
-    vendor.qti.hardware.btconfigstore@2.0-impl \
-    vendor.qti.hardware.fm@1.0-impl \
-    libadsprpc \
-    libbluetooth_audio_session_qti \
-    libbluetooth_audio_session_qti_2_1 \
-    libbt-hidlclient \
-    libbtnv \
-    libcamxfdalgov7 \
-    libcamxfdalgov8 \
-    libcamxfdengine \
-    libcamxstatscore \
-    libcamxswprocessalgo \
-    libcamxtintlessalgo \
     libdsutils \
     libidl \
     libmdmdetect \
     libmmosal_vendor \
+    libmulawdec \
     libqmi \
     libqmi_cci \
     libqmi_client_helper \
@@ -295,10 +274,6 @@ PRODUCT_PACKAGES += \
     libqmi_encdec \
     libqmiservices \
     libthermalclient \
-    libvpphvx \
-    libvpplibrary \
-    vendor.qti.hardware.bluetooth_sar@1.0 \
-    vendor.qti.hardware.bluetooth_sar@1.1 \
     audio.primary.msmnile \
     sound_trigger.primary.msmnile \
     vendor.qti.hardware.audiohalext@1.0-impl \
@@ -313,7 +288,6 @@ PRODUCT_PACKAGES += \
     libOmxDsdDec \
     libOmxEvrcDec \
     libOmxQcelp13Dec \
-    libOmxVpp \
     libOmxWmaDec \
     liba2dpoffload \
     libacdb-fts \
@@ -340,13 +314,11 @@ PRODUCT_PACKAGES += \
     libmm-hdcpmgr \
     libmmrtpdecoder_proprietary \
     libmmrtpencoder_proprietary \
-    libmulawdec \
     libqcodec2 \
     libqtigef \
     libsmwrapper \
     libsn100u_fw \
     libsurround_3mic_proc \
-    libvppclient \
     libwfdcodecv4l2_proprietary \
     libwfdcommonutils_proprietary \
     libwfdconfigutils_proprietary \
@@ -377,6 +349,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifidisplaysessionl@1.0-halimpl \
     libxlog \
     android.hardware.secure_element@1.0-impl \
+    btaudio_offload_if \
     com.qti.sensor.imx586_raphael \
     com.qti.sensor.ov8856_raphael \
     com.qti.sensor.s5k3l6_raphael \
@@ -439,19 +412,27 @@ PRODUCT_PACKAGES += \
     com.xiaomi.node.mifragment \
     com.xiaomi.node.misegment \
     libdepthmapwrapper \
-    com.qualcomm.qti.dpm.api@1.0 \
-    com.qualcomm.qti.imscmservice@2.0 \
-    com.qualcomm.qti.imscmservice@2.1 \
-    com.qualcomm.qti.imscmservice@2.2 \
-    com.qualcomm.qti.uceservice@2.0 \
-    com.qualcomm.qti.uceservice@2.1 \
-    com.qualcomm.qti.uceservice@2.2 \
-    com.qualcomm.qti.uceservice@2.3 \
+    com.qualcomm.qti.imscmservice@2.0_vendor \
+    com.qualcomm.qti.imscmservice@2.1_vendor \
+    com.qualcomm.qti.imscmservice@2.2_vendor \
+    com.qualcomm.qti.uceservice@2.0_vendor \
+    com.qualcomm.qti.uceservice@2.1_vendor \
+    com.qualcomm.qti.uceservice@2.2_vendor \
+    com.qualcomm.qti.uceservice@2.3_vendor \
+    android.hardware.bluetooth@1.0-impl-qti \
+    audio.bluetooth_qti.default \
     camera.qcom \
+    com.dsi.ant@1.0-impl \
     com.qti.chi.override \
     fingerprint.goodix_fod.default \
     vendor.qti.esepowermanager@1.1-impl \
+    vendor.qti.hardware.bluetooth_audio@2.0-impl \
+    vendor.qti.hardware.bluetooth_audio@2.1-impl \
+    vendor.qti.hardware.bluetooth_sar@1.1-impl \
+    vendor.qti.hardware.btconfigstore@1.0-impl \
+    vendor.qti.hardware.btconfigstore@2.0-impl \
     vendor.qti.hardware.capabilityconfigstore@1.0-impl \
+    vendor.qti.hardware.fm@1.0-impl \
     vendor.qti.hardware.qseecom@1.0-impl \
     vendor.qti.hardware.qteeconnector@1.0-impl \
     vendor.qti.hardware.sensorscalibrate@1.0-impl \
@@ -472,13 +453,12 @@ PRODUCT_PACKAGES += \
     lib-siputility \
     lib-uceservice \
     libFaceGrade \
-    libGPQTEEC_vendor \
-    libGPTEE_vendor \
     libHalSuperSensorServer \
+    libI420colorconvert \
     libMegviiFacepp-0.5.2 \
-    libOpenCL \
+    libOmxCore \
+    libOmxVpp \
     libQTEEConnector_listener \
-    libQTEEConnector_vendor \
     libSNPE \
     libSecureUILib \
     libStDrvInt \
@@ -488,6 +468,7 @@ PRODUCT_PACKAGES += \
     libXMFD_AgeGender \
     lib_denoiser3 \
     libadsp_default_listener \
+    libadsprpc \
     libalAILDC \
     libalCFR \
     libalLDC \
@@ -507,11 +488,21 @@ PRODUCT_PACKAGES += \
     libarcsoft_portrait_lighting_c \
     libarcsoft_preview_deflicker \
     libarcsoft_supernight \
+    libbluetooth_audio_session_qti \
+    libbluetooth_audio_session_qti_2_1 \
+    libbt-hidlclient \
+    libbtnv \
     libc++_shared \
     libcacertclient \
     libcamera_nn_stub \
     libcamera_scene \
+    libcamxfdalgov7 \
+    libcamxfdalgov8 \
+    libcamxfdengine \
     libcamxlocalhistogramalgo \
+    libcamxstatscore \
+    libcamxswprocessalgo \
+    libcamxtintlessalgo \
     libcdsp_default_listener \
     libcdsprpc \
     libcne \
@@ -519,13 +510,9 @@ PRODUCT_PACKAGES += \
     libcneoplookup \
     libcom.qti.chinodeutils \
     libconfigdb \
-    libdisp-aba \
-    libdisplayqos \
-    libdpmqmihal \
     libdsi_netctrl \
     libft2vendor \
     libgf_hal \
-    libhdr_tm \
     libjnihelper \
     liblqe \
     libmdsprpc \
@@ -539,6 +526,7 @@ PRODUCT_PACKAGES += \
     libmivendor_module_calibration \
     libmivendor_module_hall \
     libmivendor_module_motor \
+    libmm-color-convertor \
     libmpbase \
     libnetmgr \
     libnetmgr_common \
@@ -549,25 +537,19 @@ PRODUCT_PACKAGES += \
     libpdmapper \
     libpdnotifier \
     libperipheral_client \
+    libplatformconfig \
     libqcmaputils \
     libqcrilFramework \
     libqcrildatactl \
     libqdi \
     libqdp \
     libqrtr \
-    libqseed3 \
     libqsocket \
     librcc \
     libremosaic_daemon \
     libril-qc-hal-qmi \
     libril-qc-logger \
     librilqmiservices \
-    libsdedrm \
-    libsdm-color \
-    libsdm-colormgr-algo \
-    libsdm-diag \
-    libsdm-disp-vndapis \
-    libsdmextension \
     libsdsprpc \
     libsecureui \
     libsecureui_svcsock \
@@ -580,64 +562,65 @@ PRODUCT_PACKAGES += \
     libspl \
     libssc \
     libssc_default_listener \
+    libstagefright_soft_qtiflacdec \
     libsubsystem_control \
     libswregistrationalgo \
     libsystem_health_mon \
-    libtinyxml2_1 \
     libtriplecam_video_optical_zoom \
     libultrasound \
     libvidhance \
+    libvppclient \
     libvpphcp \
+    libvpphvx \
+    libvppimmotion \
+    libvpplibrary \
+    libvpptestutils \
     libwms \
     libwqe \
     libwvhidl \
     libxml \
     libwvdrmengine \
     mi.motor.daemon \
+    qcrilHalMarshal \
+    qcril_hal_client \
     qcrild_librilutils \
     qtibus \
     qtimutex \
     sensors.mius.proximity \
     sensors.ssc \
-    vendor.display.color@1.0 \
-    vendor.display.color@1.1 \
-    vendor.display.color@1.2 \
-    vendor.display.color@1.3 \
-    vendor.display.color@1.4 \
-    vendor.display.color@1.5 \
-    vendor.display.postproc@1.0 \
-    vendor.qti.data.factory@2.0 \
-    vendor.qti.data.factory@2.1 \
-    vendor.qti.data.factory@2.2 \
-    vendor.qti.data.factory@2.3 \
-    vendor.qti.data.mwqem@1.0 \
-    vendor.qti.data.slm@1.0 \
+    vendor.qti.data.factory@2.0_vendor \
+    vendor.qti.data.factory@2.1_vendor \
+    vendor.qti.data.factory@2.2_vendor \
+    vendor.qti.data.factory@2.3_vendor \
+    vendor.qti.data.mwqem@1.0_vendor \
+    vendor.qti.data.slm@1.0_vendor \
     vendor.qti.esepowermanager@1.0 \
     vendor.qti.esepowermanager@1.1 \
+    vendor.qti.hardware.bluetooth_sar@1.0 \
+    vendor.qti.hardware.bluetooth_sar@1.1 \
     vendor.qti.hardware.cacert@1.0 \
-    vendor.qti.hardware.data.cne.internal.api@1.0 \
-    vendor.qti.hardware.data.cne.internal.constants@1.0 \
-    vendor.qti.hardware.data.cne.internal.server@1.0 \
-    vendor.qti.hardware.data.connection@1.0 \
-    vendor.qti.hardware.data.connection@1.1 \
-    vendor.qti.hardware.data.dynamicdds@1.0 \
-    vendor.qti.hardware.data.iwlan@1.0 \
-    vendor.qti.hardware.data.latency@1.0 \
-    vendor.qti.hardware.data.lce@1.0 \
-    vendor.qti.hardware.data.qmi@1.0 \
+    vendor.qti.hardware.data.cne.internal.api@1.0_vendor \
+    vendor.qti.hardware.data.cne.internal.constants@1.0_vendor \
+    vendor.qti.hardware.data.cne.internal.server@1.0_vendor \
+    vendor.qti.hardware.data.connection@1.0_vendor \
+    vendor.qti.hardware.data.connection@1.1_vendor \
+    vendor.qti.hardware.data.dynamicdds@1.0_vendor \
+    vendor.qti.hardware.data.iwlan@1.0_vendor \
+    vendor.qti.hardware.data.latency@1.0_vendor \
+    vendor.qti.hardware.data.lce@1.0_vendor \
+    vendor.qti.hardware.data.qmi@1.0_vendor \
     vendor.qti.hardware.dsp@1.0 \
-    vendor.qti.hardware.mwqemadapter@1.0 \
+    vendor.qti.hardware.mwqemadapter@1.0_vendor \
     vendor.qti.hardware.qseecom@1.0 \
-    vendor.qti.hardware.qteeconnector@1.0 \
     vendor.qti.hardware.radio.am@1.0 \
-    vendor.qti.hardware.radio.ims@1.0 \
-    vendor.qti.hardware.radio.ims@1.1 \
-    vendor.qti.hardware.radio.ims@1.2 \
-    vendor.qti.hardware.radio.ims@1.3 \
-    vendor.qti.hardware.radio.ims@1.4 \
-    vendor.qti.hardware.radio.ims@1.5 \
-    vendor.qti.hardware.radio.ims@1.6 \
-    vendor.qti.hardware.radio.ims@1.7 \
+    vendor.qti.hardware.radio.ims@1.0_vendor \
+    vendor.qti.hardware.radio.ims@1.1_vendor \
+    vendor.qti.hardware.radio.ims@1.2_vendor \
+    vendor.qti.hardware.radio.ims@1.3_vendor \
+    vendor.qti.hardware.radio.ims@1.4_vendor \
+    vendor.qti.hardware.radio.ims@1.5_vendor \
+    vendor.qti.hardware.radio.ims@1.6_vendor \
+    vendor.qti.hardware.radio.ims@1.7_vendor \
     vendor.qti.hardware.radio.internal.deviceinfo@1.0 \
     vendor.qti.hardware.radio.lpa@1.0 \
     vendor.qti.hardware.radio.lpa@1.1 \
@@ -660,21 +643,24 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.radio.uim_remote_client@1.2 \
     vendor.qti.hardware.radio.uim_remote_server@1.0 \
     vendor.qti.hardware.sensorscalibrate@1.0 \
-    vendor.qti.hardware.slmadapter@1.0 \
+    vendor.qti.hardware.slmadapter@1.0_vendor \
     vendor.qti.hardware.soter@1.0 \
     vendor.qti.hardware.tui_comm@1.0 \
+    vendor.qti.hardware.vpp@1.1 \
+    vendor.qti.hardware.vpp@1.2 \
+    vendor.qti.hardware.vpp@1.3 \
     vendor.qti.ims.callcapability@1.0 \
     vendor.qti.ims.callinfo@1.0 \
     vendor.qti.ims.factory@1.0 \
     vendor.qti.ims.factory@1.1 \
-    vendor.qti.ims.rcsconfig@1.0 \
-    vendor.qti.ims.rcsconfig@1.1 \
-    vendor.qti.ims.rcsconfig@2.0 \
-    vendor.qti.ims.rcsconfig@2.1 \
+    vendor.qti.ims.rcsconfig@1.0_vendor \
+    vendor.qti.ims.rcsconfig@1.1_vendor \
+    vendor.qti.ims.rcsconfig@2.0_vendor \
+    vendor.qti.ims.rcsconfig@2.1_vendor \
     vendor.qti.imsrtpservice@3.0-service-Impl \
     vendor.qti.imsrtpservice@3.0 \
-    vendor.qti.latency@2.0 \
-    vendor.qti.latency@2.1 \
+    vendor.qti.latency@2.0_vendor \
+    vendor.qti.latency@2.1_vendor \
     capi_v2_aptX_CLHDAD_Encoder \
     capi_v2_aptX_Classic \
     capi_v2_aptX_HD \
@@ -718,13 +704,10 @@ PRODUCT_PACKAGES += \
     batterysecret \
     cdsprpcd \
     cnd \
-    cnss-daemon \
-    dpmQmiMgr \
     dspservice \
     android.hardware.bluetooth@1.0-service-qti \
     android.hardware.drm@1.3-service.widevine \
     qcrild \
-    vendor.display.color@1.0-service \
     vendor.qti.esepowermanager@1.1-service \
     vendor.qti.hardware.capabilityconfigstore@1.0-service \
     vendor.qti.hardware.qseecom@1.0-service \
@@ -743,11 +726,9 @@ PRODUCT_PACKAGES += \
     irsc_util \
     mi_thermald \
     netmgrd \
-    nv_mac \
     pd-mapper \
     pm-proxy \
     pm-service \
-    ppd \
     qrtr-ns \
     qti \
     rmt_storage \
